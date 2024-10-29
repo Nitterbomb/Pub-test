@@ -2,19 +2,29 @@
 import random
 
 def bubble_sort(unsorted_list):
+    sorted_list = unsorted_list[:]
     # Your code goes here
+    return sorted_list
 
 def selection_sort(unsorted_list):
+    sorted_list = unsorted_list[:]
     # Your code goes here
+    return sorted_list
 
 def insertion_sort(unsorted_list):
+    sorted_list = unsorted_list[:]
     # Your code goes here
+    return sorted_list
 
 def merge_sort(unsorted_list):
+    sorted_list = unsorted_list[:]
     # Your code goes here
+    return sorted_list
 
 def quick_sort(unsorted_list):
+    sorted_list = unsorted_list[:]
     # Your code goes here
+    return sorted_list
 
 def main():
     to_be_sorted = [random.randint(1,100) for i in range(100)]
