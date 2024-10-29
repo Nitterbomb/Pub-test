@@ -4,28 +4,81 @@ import time
 
 def bubble_sort(unsorted_list):
     sorted_list = unsorted_list[:]
-    # Your code goes here
+    sort_count = 1
+    while sort_count != 0:
+        sort_count = 0
+        for index in range(0, len(sorted_list)-1):
+            if sorted_list[index] > sorted_list[index+1]:
+                temp_storage = sorted_list[index]
+                sorted_list[index] = sorted_list[index+1]
+                sorted_list[index+1] = temp_storage
+                sort_count += 1
     return sorted_list
 
 def selection_sort(unsorted_list):
     sorted_list = unsorted_list[:]
-    # Your code goes here
+    for index in range(len(sorted_list)):
+        min_index = index
+        for index_2 in range(index, (len(sorted_list))):
+            if sorted_list[min_index] > sorted_list[index_2]:
+                min_index = index_2
+        temp_storage = sorted_list[index]
+        sorted_list[index] = sorted_list[min_index]
+        sorted_list[min_index] = temp_storage
     return sorted_list
 
 def insertion_sort(unsorted_list):
     sorted_list = unsorted_list[:]
-    # Your code goes here
+    for index in range(1,len(sorted_list)):
+        for index_2 in range(0,index):
+            if sorted_list[index] < sorted_list[index_2]:
+                temp_storage = sorted_list[index_2]
+                sorted_list[index_2] = sorted_list[index]
+                sorted_list[index] = temp_storage
     return sorted_list
 
 def merge_sort(unsorted_list):
-    sorted_list = unsorted_list[:]
-    # Your code goes here
-    return sorted_list
+    if len(unsorted_list) > 1:
+        mid = len(unsorted_list) // 2
+        left = merge_sort(unsorted_list[:mid])
+        right = merge_sort(unsorted_list[mid:])
+        i = j = k = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                unsorted_list[k] = left[i]
+                i += 1
+            else:
+                unsorted_list[k] = right[j]
+                j += 1
+            k += 1
+        while i < len(left):
+            unsorted_list[k] = left[i]
+            i += 1
+            k += 1
+        while j < len(right):
+            unsorted_list[k] = right[j]
+            j += 1
+            k += 1
+    return unsorted_list
 
 def quick_sort(unsorted_list):
-    sorted_list = unsorted_list[:]
-    # Your code goes here
-    return sorted_list
+    if len(unsorted_list) <= 1:
+        return unsorted_list
+    else:
+        pivot = unsorted_list[len(unsorted_list) // 2] 
+        left = []
+        middle = []
+        right = []
+
+        for x in unsorted_list:
+            if x < pivot:
+                left.append(x)
+            elif x == pivot:
+                middle.append(x)
+            else:
+                right.append(x)
+
+        return quick_sort(left) + middle + quick_sort(right)
 
 def main():
     to_be_sorted = [random.randint(1,100) for i in range(100)]
